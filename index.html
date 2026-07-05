@@ -1,1526 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>situational</title>
+<style>
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+:root{
+  --bg:#050505;
+  --panel:#111111;
+  --panel-2:#181818;
+  --border:#3b3218;
+  --white:#ffffff;
+  --yellow:#ffd84d;
+  --mustard:#c99a24;
+  --mustard-dark:#8f6814;
+  --muted:#cfcfcf;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:"Century Gothic",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--white);
+}
+.site-nav{
+  background:#0d0d0d;
+  padding:10px 16px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:6px;
+  border-bottom:1px solid var(--border);
+}
+.site-nav a{
+  color:var(--white);
+  text-decoration:none;
+  padding:7px 10px;
+  border-radius:6px;
+  font-size:.9rem;
+}
+.site-nav a:hover{background:#2a2414;color:var(--yellow)}
+.site-nav a.active{background:var(--mustard-dark);color:var(--white)}
 
-  <title>situational</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family:
-        "Century Gothic",
-        Arial,
-        sans-serif;
-      background: #f0f4f8;
-      color: #2c3e50;
-    }
-
-    .site-nav {
-      background: #111;
-      padding: 10px 16px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .site-nav a {
-      color: white;
-      text-decoration: none;
-      padding: 7px 10px;
-      border-radius: 6px;
-      font-size: 0.9rem;
-    }
-
-    .site-nav a:hover,
-    .site-nav a.active {
-      background: #444;
-    }
-
-    .page {
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 760px;
-      margin: auto;
-      padding: 24px;
-      background: white;
-      border-radius: 12px;
-
-      box-shadow:
-        0 4px 12px
-        rgba(0, 0, 0, 0.1);
-    }
-
-    h1,
-    h2,
-    h3 {
-      text-align: center;
-    }
-
-    h1 {
-      margin: 0 0 20px;
-    }
-
-    label {
-      display: block;
-      margin-top: 12px;
-      font-weight: 600;
-    }
-
-    select,
-    input,
-    textarea {
-      width: 100%;
-      margin-top: 6px;
-      padding: 10px;
-      border: 1px solid #b2bec3;
-      border-radius: 7px;
-      background: white;
-      color: #2c3e50;
-      font-family: inherit;
-    }
-
-    textarea {
-      min-height: 95px;
-      resize: vertical;
-    }
-
-    .field-grid {
-      display: grid;
-      grid-template-columns:
-        1fr 1fr;
-      gap: 12px;
-    }
-
-    .field-card {
-      margin-top: 16px;
-      padding: 16px;
-      border: 1px solid #dfe6e9;
-      border-radius: 10px;
-      background: #fafafa;
-    }
-
-    .buttons {
-      margin-top: 18px;
-      text-align: center;
-    }
-
-    button {
-      padding: 8px 14px;
-      margin: 5px;
-      border: none;
-      border-radius: 6px;
-      background: #111;
-      color: white;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    button:hover {
-      background: #444;
-    }
-
-    button.secondary {
-      background: #636e72;
-    }
-
-    button.secondary:hover {
-      background: #4f575a;
-    }
-
-    .output-wrap {
-      display: none;
-      margin-top: 24px;
-    }
-
-    .note-card {
-      margin-top: 14px;
-      padding: 16px;
-      border: 1px solid #dfe6e9;
-      border-radius: 10px;
-      background: #fafafa;
-    }
-
-    .note-card h3 {
-      margin: 0 0 10px;
-    }
-
-    .note-card textarea {
-      background: white;
-    }
-
-    .small-status {
-      min-height: 20px;
-      margin-top: 8px;
-      color: #0984e3;
-      text-align: center;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    @media (max-width: 620px) {
-      .page {
-        padding: 12px;
-      }
-
-      .container {
-        padding: 18px;
-      }
-
-      .field-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+.page{padding:20px}
+.container{
+  max-width:760px;margin:auto;padding:24px;background:var(--panel);
+  border:1px solid var(--border);border-radius:12px
+}
+h1{margin:0 0 20px;color:var(--mustard);text-align:center}
+h3{color:var(--yellow);text-align:center}
+label{display:block;margin-top:12px;color:var(--yellow);font-weight:600}
+select,input,textarea{
+  width:100%;margin-top:6px;padding:10px;border:1px solid #655522;
+  border-radius:7px;background:#222;color:var(--white);font-family:inherit
+}
+textarea{min-height:95px;resize:vertical}
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field-card{margin-top:16px;padding:16px;border:1px solid var(--border);border-radius:10px;background:var(--panel-2)}
+.buttons{text-align:center;margin-top:18px}
+button{
+  padding:8px 14px;margin:5px;border:none;border-radius:6px;
+  background:var(--mustard-dark);color:var(--white);cursor:pointer;font-family:inherit
+}
+button:hover{background:var(--mustard)}
+button.secondary{background:#333}
+button.secondary:hover{background:#555}
+.output-wrap{display:none;margin-top:24px}
+.note-card{margin-top:14px;padding:16px;border:1px solid var(--border);border-radius:10px;background:var(--panel-2)}
+.note-card textarea{background:#222}
+.small-status{text-align:center;min-height:20px;margin-top:8px;color:var(--mustard)}
+.hidden{display:none}
+.date-preview{grid-column:1/-1;padding:12px;border:1px solid #655522;border-radius:7px;background:#111;color:var(--mustard);text-align:center;font-weight:bold}
+@media(max-width:620px){.page{padding:12px}.container{padding:18px}.field-grid{grid-template-columns:1fr}}
+</style>
 </head>
-
 <body>
+<nav class="site-nav">
+<a href="https://drpboop.github.io/home/">home</a>
+<a href="https://drpboop.github.io/crit/">critter</a>
+<a href="https://drpboop.github.io/refill-lookback/">refill lookback</a>
+<a class="active" href="https://drpboop.github.io/situational/">situational</a>
+</nav>
 
-  <nav class="site-nav">
+<div class="page">
+<div class="container">
+<h1>situational</h1>
 
-    <a href="https://drpboop.github.io/home/">
-      home
-    </a>
+<label for="reason">reason</label>
+<select id="reason">
+<option value="">-- select reason --</option>
+</select>
 
-    <a href="https://drpboop.github.io/crit/">
-      critter
-    </a>
+<div id="situationWrap" class="hidden">
+<label for="situation">situation</label>
+<select id="situation">
+<option value="">-- select situation --</option>
+</select>
+</div>
 
-    <a href="https://drpboop.github.io/refill-lookback/">
-      refill lookback
-    </a>
+<div id="fields" class="field-card hidden"></div>
 
-    <a
-      class="active"
-      href="https://drpboop.github.io/situational/"
-    >
-      situational
-    </a>
+<div class="buttons">
+<button onclick="createNotes()">create</button>
+<button class="secondary" onclick="resetAll()">reset</button>
+</div>
 
-  </nav>
+<div id="status" class="small-status"></div>
+<div id="outputs" class="output-wrap"></div>
+</div>
+</div>
 
-  <div class="page">
+<script>
+const storageKey="situationalState";
 
-    <div class="container">
+const fields={
+  drugStrength:{label:"drug name & strength",type:"text"},
+  ier:{label:"ier",type:"text"},
+  quantity:{label:"approved quantity",type:"text"},
+  duration:{label:"approval length",type:"select",options:["3 months","6 months","1 year"]},
+  source:{label:"source / person",type:"text"},
+  vendor:{label:"iro vendor",type:"select",options:["maximus","mcmc","mcn","mmro"]},
+  caseKey:{label:"case key",type:"text"},
+  caseNumber:{label:"case number",type:"text"},
+  program:{label:"program name",type:"text"},
+  criteria:{label:"criteria id",type:"text"},
+  mailDate:{label:"member letter mail date",type:"date"},
+  mailTime:{label:"member letter mail time",type:"time"},
+  faxDate:{label:"prescriber fax date",type:"date"},
+  faxTime:{label:"prescriber fax time",type:"time"},
+  reopenType:{label:"reopen type",type:"select",options:["clerical","administrative"]},
+  details:{label:"detailed description of edits / rationale",type:"textarea"},
+  paNumber:{label:"pa number",type:"text"},
+  accountType:{label:"transfer type",type:"select",options:["inactive account to active account","active account to active account"]},
+  reviewType:{label:"review type",type:"select",options:["pa/ql","st/ql","ce/ql","other review"]}
+};
 
-      <h1>situational</h1>
+const data={
+  "cambia":{
+    "iro send":{notes:[{title:"core note",template:"iro sent to cambia for review."}]},
+    "mrioa send":{notes:[{title:"core note",template:"iro request was submitted to mrioa for review."}]},
+    "iro approval":{fields:["duration"],notes:[{title:"core note",template:"this case was approved on {approvalRange}."}]},
+    "p2p request":{notes:[{title:"rxclaim call tracking note",template:"mdr peer to peer request has been received and forwarded to cambia for review."}]},
+    "additional information to open p2p":{notes:[{title:"core note",template:"additional information has been attached and submitted to mrioa."}]}
+  },
+  "nj appeal notes":{
+    "sending appeal":{notes:[{title:"core note",template:"emailed 2nd level appeal request to bcbsnj horizon at externalappealsum_fax."}]},
+    "mac response note":{notes:[{title:"core note",template:"per pharmacy_support, this case has been referred to our appeals area for the member appeal committee (mac) process."}]},
+    "withdrawn appeal":{notes:[{title:"core note",template:"per pharmacy_support, appeal has been withdrawn."}]},
+    "upheld denial":{notes:[{title:"core note",template:"per nj, appeal has been denied."}]},
+    "iro review":{notes:[{title:"core note",template:"per nj, appeal has been assigned to iro review."}]}
+  },
+  "hcsc":{
+    "approval":{
+      fields:["drugStrength","ier","quantity","duration"],
+      notes:[
+        {title:"rxclaim note",template:"{drugStrength} hcsc appeal decision received: approved per {ier} for up to {quantity}. authorization effective {approvalRange}."},
+        {title:"core note",template:"hcsc appeal decision received: approved per {ier} for up to {quantity}. authorization effective {approvalRange}."}
+      ]
+    },
+    "denial packet send":{
+      fields:["drugStrength","source"],
+      notes:[
+        {title:"core note",template:"appeal in process. plan pulled denial packet per {source}."},
+        {title:"rxclaim note",template:"{drugStrength}, appeal in process. plan pulled denial packet per {source}."}
+      ]
+    },
+    "denial":{notes:[{title:"core note",template:"appeal denied. evaluate for next step of review."}]}
+  },
+  "north dakota":{
+    "approval":{
+      fields:["drugStrength","ier","quantity","duration"],
+      notes:[
+        {title:"rxclaim note",template:"{drugStrength} nd appeal decision received: approved per {ier} for up to {quantity}. authorization effective {approvalRange}."},
+        {title:"core note",template:"nd appeal decision received: approved per {ier} for up to {quantity}. authorization effective {approvalRange}."}
+      ]
+    },
+    "denial":{notes:[{title:"core note",template:"nd appeal has been denied."}]}
+  },
+  "minnesota":{
+    "approval":{
+      fields:["drugStrength","ier","quantity","duration"],
+      notes:[
+        {title:"rxclaim note",template:"{drugStrength} mn appeal decision received: approved per {ier} for up to {quantity}. authorization effective {approvalRange}."},
+        {title:"core note",template:"mn appeal decision received: approved per {ier} for up to {quantity}. authorization effective {approvalRange}."}
+      ]
+    }
+  },
+  "chp / dte / fl nat / mncoupe":{
+    "iro submit":{notes:[{title:"core technician note",template:"iro request was submitted to mrioa for review."}]},
+    "iro denial decision":{notes:[{title:"core comment",template:"iro determination attached - denial upheld."}]},
+    "iro approval decision":{notes:[{title:"core comment",template:"iro determination attached - denial overturned."}]}
+  },
+  "flblue / truli":{
+    "submit iro":{notes:[{title:"techcore note",template:"iro request was sent to christopher place for review."}]},
+    "iro denial decision":{notes:[{title:"core comment",template:"iro determination attached - denial upheld."}]},
+    "iro approval decision":{notes:[{title:"core comment",template:"iro determination attached - denial overturned."}]}
+  },
+  "rhode island":{
+    "submit iro":{fields:["vendor"],notes:[{title:"core note",template:"iro was submitted to {vendor} for review."}]},
+    "iro denial decision":{notes:[{title:"core comment",template:"iro determination attached - denial upheld."}]},
+    "iro approval decision":{notes:[{title:"core comment",template:"iro determination attached - denial overturned."}]}
+  },
+  "peer to peer":{
+    "all eligibility request":{fields:["caseKey"],notes:[{title:"request note",template:"this is a peer to peer request for denied case {caseKey}. **p2p request. please do not return until all call attempts have been completed.** see attached."}]}
+  },
+  "prior authorization intake":{
+    "verbal pa intake":{fields:["drugStrength"],notes:[{title:"rxclaim call note",template:"verbal pa intake completed for {drugStrength}."}]}
+  },
+  "popseg":{
+    "popseg note":{notes:[{title:"note",template:"popseg data has been edited by senior techs. please do not reload member."}]}
+  },
+  "jira":{
+    "missing program":{fields:["program","criteria"],notes:[{title:"note",template:"jira request submitted for missing {program} not pulling. criteria id {criteria}."}]}
+  },
+  "mtat":{
+    "denial overturned":{fields:["caseNumber","drugStrength","duration","reviewType"],custom:"mtat"}
+  },
+  "letter edit":{
+    "manual letter edit":{fields:["mailDate","mailTime","faxDate","faxTime"],notes:[{title:"core note",template:"member letter manually mailed via seachange {mailDate} {mailTime} and prescriber letter rightfaxed {faxDate} {faxTime}."}]}
+  },
+  "terminate negative pa":{
+    "terminate negative pa":{notes:[{title:"pa note",template:"terminating negative pa. new approval, negative pa preventing new pa from pulling."}]}
+  },
+  "reopen":{
+    "reopened per seniors":{
+      fields:["reopenType","details","paNumber"],
+      notes:[
+        {title:"case note",template:"reopened per seniors: {reopenType} - {details}"},
+        {title:"qa note",template:"this is a reopen/correction of case {paNumber}."}
+      ]
+    }
+  },
+  "transfer prior authorization":{
+    "transfer to another account":{fields:["accountType","paNumber"],custom:"transfer"}
+  }
+};
 
-      <label for="category">
-        category
-      </label>
+function formatDate(date){
+  return String(date.getMonth()+1).padStart(2,"0")+"/"+
+         String(date.getDate()).padStart(2,"0")+"/"+
+         date.getFullYear();
+}
+function addMonthsClamped(date,months){
+  const day=date.getDate();
+  const result=new Date(date.getFullYear(),date.getMonth()+months,1);
+  const last=new Date(result.getFullYear(),result.getMonth()+1,0).getDate();
+  result.setDate(Math.min(day,last));
+  return result;
+}
+function approvalRange(duration){
+  const now=new Date();
+  const start=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  const months=duration==="3 months"?3:duration==="6 months"?6:duration==="1 year"?12:0;
+  return months?formatDate(start)+"-"+formatDate(addMonthsClamped(start,months)):"";
+}
 
-      <select
-        id="category"
-        onchange="loadSituations()"
-      >
+function initReasons(){
+  const reason=document.getElementById("reason");
+  Object.keys(data).forEach(name=>reason.add(new Option(name,name)));
+}
 
-        <option value="">
-          -- select category --
-        </option>
+function loadSituations(savedSituation=""){
+  const reasonValue=document.getElementById("reason").value;
+  const wrap=document.getElementById("situationWrap");
+  const situation=document.getElementById("situation");
 
-      </select>
+  situation.innerHTML='<option value="">-- select situation --</option>';
+  document.getElementById("fields").classList.add("hidden");
+  document.getElementById("fields").innerHTML="";
 
-      <label for="situation">
-        situation
-      </label>
+  if(!reasonValue){
+    wrap.classList.add("hidden");
+    saveState();
+    return;
+  }
 
-      <select
-        id="situation"
-        onchange="renderFields()"
-      >
+  wrap.classList.remove("hidden");
+  Object.keys(data[reasonValue]).forEach(name=>situation.add(new Option(name,name)));
+  if(savedSituation)situation.value=savedSituation;
+  saveState();
+}
 
-        <option value="">
-          -- select situation --
-        </option>
+function makeField(key,value=""){
+  const field=fields[key];
+  if(field.type==="select"){
+    const options=field.options.map(option=>`<option value="${option}" ${value===option?"selected":""}>${option}</option>`).join("");
+    return `<div><label for="${key}">${field.label}</label><select id="${key}" class="dynamic-field"><option value="">-- select --</option>${options}</select></div>`+
+      (key==="duration"?`<div id="datePreview" class="date-preview">${value?approvalRange(value):"select an approval length"}</div>`:"");
+  }
+  if(field.type==="textarea"){
+    return `<div style="grid-column:1/-1"><label for="${key}">${field.label}</label><textarea id="${key}" class="dynamic-field">${value}</textarea></div>`;
+  }
+  return `<div><label for="${key}">${field.label}</label><input id="${key}" class="dynamic-field" type="${field.type}" value="${value}"></div>`;
+}
 
-      </select>
+function renderFields(savedValues={}){
+  const reasonValue=document.getElementById("reason").value;
+  const situationValue=document.getElementById("situation").value;
+  const wrap=document.getElementById("fields");
 
-      <div
-        id="fields"
-        class="field-card hidden"
-      ></div>
+  if(!reasonValue||!situationValue){
+    wrap.classList.add("hidden");
+    wrap.innerHTML="";
+    saveState();
+    return;
+  }
 
-      <div class="buttons">
+  const config=data[reasonValue][situationValue];
+  const needed=config.fields||[];
 
-        <button onclick="createNotes()">
-          create
-        </button>
+  if(!needed.length){
+    wrap.classList.add("hidden");
+    wrap.innerHTML="";
+  }else{
+    wrap.classList.remove("hidden");
+    wrap.innerHTML='<div class="field-grid">'+needed.map(key=>makeField(key,savedValues[key]||"")).join("")+"</div>";
+    wrap.querySelectorAll(".dynamic-field").forEach(el=>{
+      el.addEventListener("input",handleDynamicChange);
+      el.addEventListener("change",handleDynamicChange);
+    });
+  }
+  saveState();
+}
 
-        <button
-          class="secondary"
-          onclick="resetAll()"
-        >
-          reset
-        </button>
+function handleDynamicChange(){
+  const duration=document.getElementById("duration");
+  const preview=document.getElementById("datePreview");
+  if(duration&&preview)preview.textContent=approvalRange(duration.value)||"select an approval length";
+  saveState();
+}
 
-      </div>
+function getDynamicValues(){
+  const values={};
+  document.querySelectorAll(".dynamic-field").forEach(el=>values[el.id]=el.value);
+  return values;
+}
 
-      <div
-        id="status"
-        class="small-status"
-      ></div>
+function saveState(){
+  const notes=[...document.querySelectorAll(".generated-note")].map(area=>({title:area.dataset.title,text:area.value}));
+  localStorage.setItem(storageKey,JSON.stringify({
+    reason:document.getElementById("reason").value,
+    situation:document.getElementById("situation").value,
+    values:getDynamicValues(),
+    notes
+  }));
+}
 
-      <div
-        id="outputs"
-        class="output-wrap"
-      ></div>
+function restoreState(){
+  const state=JSON.parse(localStorage.getItem(storageKey)||"null");
+  if(!state)return;
+  document.getElementById("reason").value=state.reason||"";
+  loadSituations(state.situation||"");
+  renderFields(state.values||{});
+  if(state.notes?.length)renderOutputs(state.notes);
+}
 
+function fillTemplate(template,values){
+  return template.replace(/\{\{(.*?)\}\}/g,(match,key)=>{
+    if(key==="approvalRange")return approvalRange(values.duration);
+    if(fields[key]?.type==="date"&&values[key]){
+      const parts=values[key].split("-");
+      return parts[1]+"/"+parts[2]+"/"+parts[0];
+    }
+    return values[key]||"";
+  }).replace(/\s+/g," ").trim();
+}
+
+function createNotes(){
+  const reason=document.getElementById("reason").value;
+  const situation=document.getElementById("situation").value;
+  const status=document.getElementById("status");
+
+  if(!reason||!situation){
+    status.textContent="please select a reason and situation.";
+    return;
+  }
+
+  const config=data[reason][situation];
+  const values=getDynamicValues();
+  const missing=(config.fields||[]).filter(key=>!values[key]);
+  if(missing.length){
+    status.textContent="please complete all required fields.";
+    return;
+  }
+
+  let notes=[];
+  if(config.custom==="mtat"){
+    const range=approvalRange(values.duration);
+    const base=values.caseNumber+" denial was overturned due to mtat. "+values.drugStrength+" was approved";
+    notes.push({title:"core note",text:base+" effective "+range+". prime clinical review 1-866-202-3474."});
+    const upToQl=["pa/ql","st/ql","ce/ql"].includes(values.reviewType)?" up to ql":"";
+    notes.push({title:"rxclaim note",text:base+upToQl+" effective "+range+". prime clinical review 1-866-202-3474."});
+  }else if(config.custom==="transfer"){
+    notes.push({title:"note",text:"transferred pa from "+values.accountType+" per case "+values.paNumber+"."});
+  }else{
+    notes=(config.notes||[]).map(note=>({title:note.title,text:fillTemplate(note.template,values)}));
+  }
+
+  renderOutputs(notes);
+  status.textContent="created";
+  saveState();
+}
+
+function renderOutputs(notes){
+  const outputs=document.getElementById("outputs");
+  outputs.innerHTML=notes.map((note,index)=>`
+    <div class="note-card">
+      <h3>${note.title}</h3>
+      <textarea id="note${index}" class="generated-note" data-title="${note.title}" readonly onclick="this.select()">${note.text}</textarea>
+      <div class="buttons"><button onclick="copyNote('note${index}')">copy</button></div>
     </div>
-
-  </div>
-
-  <script>
-    const fields = {
-      startDate: {
-        label: "start date",
-        type: "date"
-      },
-
-      endDate: {
-        label: "end date",
-        type: "date"
-      },
-
-      drug: {
-        label: "drug name",
-        type: "text"
-      },
-
-      fullDrug: {
-        label: "full drug name",
-        type: "text"
-      },
-
-      strength: {
-        label: "strength",
-        type: "text"
-      },
-
-      form: {
-        label: "form",
-        type: "text"
-      },
-
-      ier: {
-        label: "ier",
-        type: "text"
-      },
-
-      quantity: {
-        label: "approved quantity",
-        type: "text"
-      },
-
-      source: {
-        label: "source / person",
-        type: "text"
-      },
-
-      vendor: {
-        label: "iro vendor",
-        type: "select",
-        options: [
-          "maximus",
-          "mcmc",
-          "mcn",
-          "mmro"
-        ]
-      },
-
-      caseKey: {
-        label: "case key",
-        type: "text"
-      },
-
-      caseNumber: {
-        label: "case number",
-        type: "text"
-      },
-
-      program: {
-        label: "program name",
-        type: "text"
-      },
-
-      criteria: {
-        label: "criteria id",
-        type: "text"
-      },
-
-      mailDate: {
-        label:
-          "member letter mail date",
-        type: "date"
-      },
-
-      mailTime: {
-        label:
-          "member letter mail time",
-        type: "time"
-      },
-
-      faxDate: {
-        label:
-          "prescriber fax date",
-        type: "date"
-      },
-
-      faxTime: {
-        label:
-          "prescriber fax time",
-        type: "time"
-      },
-
-      reopenType: {
-        label: "reopen type",
-        type: "select",
-        options: [
-          "clerical",
-          "administrative"
-        ]
-      },
-
-      details: {
-        label:
-          "detailed description of edits / rationale",
-        type: "textarea"
-      },
-
-      paNumber: {
-        label: "pa number",
-        type: "text"
-      },
-
-      accountType: {
-        label: "transfer type",
-        type: "select",
-        options: [
-          "inactive account to active account",
-          "active account to active account"
-        ]
-      },
-
-      reviewType: {
-        label: "review type",
-        type: "select",
-        options: [
-          "pa/ql",
-          "st/ql",
-          "ce/ql",
-          "other review"
-        ]
-      }
-    };
-
-    const data = {
-      "cambia": {
-        "iro send": {
-          notes: [
-            {
-              title: "core note",
-              template:
-                "iro sent to cambia for review."
-            }
-          ]
-        },
-
-        "mrioa send": {
-          notes: [
-            {
-              title: "core note",
-              template:
-                "iro request was submitted to mrioa for review."
-            }
-          ]
-        },
-
-        "iro approval": {
-          fields: [
-            "startDate",
-            "endDate"
-          ],
-
-          notes: [
-            {
-              title: "core note",
-              template:
-                "this case was approved effective {{startDate}} through {{endDate}}."
-            }
-          ]
-        },
-
-        "p2p request": {
-          notes: [
-            {
-              title:
-                "rxclaim call tracking note",
-
-              template:
-                "mdr peer to peer request has been received and forwarded to cambia for review."
-            }
-          ]
-        },
-
-        "additional information to open p2p": {
-          notes: [
-            {
-              title: "core note",
-              template:
-                "additional information has been attached and submitted to mrioa."
-            }
-          ]
-        }
-      },
-
-      "nj appeal notes": {
-        "sending appeal": {
-          notes: [
-            {
-              title: "core note",
-              template:
-                "emailed 2nd level appeal request to bcbsnj horizon at externalappealsum_fax."
-            }
-          ]
-        },
-
-        "mac response note": {
-          notes: [
-            {
-              title: "core note",
-              template:
-                "per pharmacy_support, this case has been referred to our appeals area for the member appeal committee (mac) process."
-            }
-          ]
-        },
-
-        "withdrawn appeal": {
-          notes: [
-            {
-              title: "core note",
-              template:
-                "per pharmacy_support, appeal has been withdrawn."
-            }
-          ]
-        },
-
-        "upheld denial": {
-          notes: [
-            {
-              title: "core note",
-              template:
-                "per nj, appeal has been denied."
-            }
-          ]
-        },
-
-        "iro review": {
-          notes: [
-            {
-              title: "core note",
-              template:
-                "per nj, appeal has been assigned to iro review."
-            }
-          ]
-        }
-      },
-
-      "hcsc": {
-        "approval": {
-          fields: [
-            "fullDrug",
-            "strength",
-            "ier",
-            "quantity",
-            "startDate",
-            "endDate"
-          ],
-
-          notes: [
-            {
-              title: "rxclaim note",
-
-              template:
-                "{{fullDrug}} {{strength}} hcsc appeal decision received: approved per {{ier}} for up to {{quantity}}. authorization effective {{startDate}} - {{endDate}}."
-            },
-
-            {
-              title: "core note",
-
-              template:
-                "hcsc appeal decision received: approved per {{ier}} for up to {{quantity}}. authorization effective {{startDate}} - {{endDate}}."
-            }
-          ]
-        },
-
-        "denial packet send": {
-          fields: [
-            "drug",
-            "source"
-          ],
-
-          notes: [
-            {
-              title: "core note",
-
-              template:
-                "appeal in process. plan pulled denial packet per {{source}}."
-            },
-
-            {
-              title: "rxclaim note",
-
-              template:
-                "{{drug}}, appeal in process. plan pulled denial packet per {{source}}."
-            }
-          ]
-        },
-
-        "denial": {
-          notes: [
-            {
-              title: "core note",
-
-              template:
-                "appeal denied. evaluate for next step of review."
-            }
-          ]
-        }
-      },
-
-      "north dakota": {
-        "approval": {
-          fields: [
-            "fullDrug",
-            "strength",
-            "ier",
-            "quantity",
-            "startDate",
-            "endDate"
-          ],
-
-          notes: [
-            {
-              title: "rxclaim note",
-
-              template:
-                "{{fullDrug}} {{strength}} nd appeal decision received: approved per {{ier}} for up to {{quantity}}. authorization effective {{startDate}} - {{endDate}}."
-            },
-
-            {
-              title: "core note",
-
-              template:
-                "nd appeal decision received: approved per {{ier}} for up to {{quantity}}. authorization effective {{startDate}} - {{endDate}}."
-            }
-          ]
-        },
-
-        "denial": {
-          notes: [
-            {
-              title: "core note",
-              template:
-                "nd appeal has been denied."
-            }
-          ]
-        }
-      },
-
-      "minnesota": {
-        "approval": {
-          fields: [
-            "fullDrug",
-            "strength",
-            "ier",
-            "quantity",
-            "startDate",
-            "endDate"
-          ],
-
-          notes: [
-            {
-              title: "rxclaim note",
-
-              template:
-                "{{fullDrug}} {{strength}} mn appeal decision received: approved per {{ier}} for up to {{quantity}}. authorization effective {{startDate}} - {{endDate}}."
-            },
-
-            {
-              title: "core note",
-
-              template:
-                "mn appeal decision received: approved per {{ier}} for up to {{quantity}}. authorization effective {{startDate}} - {{endDate}}."
-            }
-          ]
-        }
-      },
-
-      "chp / dte / fl nat / mncoupe": {
-        "iro submit": {
-          notes: [
-            {
-              title:
-                "core technician note",
-
-              template:
-                "iro request was submitted to mrioa for review."
-            }
-          ]
-        },
-
-        "iro denial decision": {
-          notes: [
-            {
-              title: "core comment",
-
-              template:
-                "iro determination attached - denial upheld."
-            }
-          ]
-        },
-
-        "iro approval decision": {
-          notes: [
-            {
-              title: "core comment",
-
-              template:
-                "iro determination attached - denial overturned."
-            }
-          ]
-        }
-      },
-
-      "flblue / truli": {
-        "submit iro": {
-          notes: [
-            {
-              title: "techcore note",
-
-              template:
-                "iro request was sent to christopher place for review."
-            }
-          ]
-        },
-
-        "iro denial decision": {
-          notes: [
-            {
-              title: "core comment",
-
-              template:
-                "iro determination attached - denial upheld."
-            }
-          ]
-        },
-
-        "iro approval decision": {
-          notes: [
-            {
-              title: "core comment",
-
-              template:
-                "iro determination attached - denial overturned."
-            }
-          ]
-        }
-      },
-
-      "rhode island": {
-        "submit iro": {
-          fields: [
-            "vendor"
-          ],
-
-          notes: [
-            {
-              title: "core note",
-
-              template:
-                "iro was submitted to {{vendor}} for review."
-            }
-          ]
-        },
-
-        "iro denial decision": {
-          notes: [
-            {
-              title: "core comment",
-
-              template:
-                "iro determination attached - denial upheld."
-            }
-          ]
-        },
-
-        "iro approval decision": {
-          notes: [
-            {
-              title: "core comment",
-
-              template:
-                "iro determination attached - denial overturned."
-            }
-          ]
-        }
-      },
-
-      "peer to peer": {
-        "all eligibility request": {
-          fields: [
-            "caseKey"
-          ],
-
-          notes: [
-            {
-              title: "request note",
-
-              template:
-                "this is a peer to peer request for denied case {{caseKey}}. **p2p request. please do not return until all call attempts have been completed.** see attached."
-            }
-          ]
-        }
-      },
-
-      "prior authorization intake": {
-        "verbal pa intake": {
-          fields: [
-            "drug",
-            "strength"
-          ],
-
-          notes: [
-            {
-              title:
-                "rxclaim call note",
-
-              template:
-                "verbal pa intake completed for {{drug}} {{strength}}."
-            }
-          ]
-        }
-      },
-
-      "popseg": {
-        "popseg note": {
-          notes: [
-            {
-              title: "note",
-
-              template:
-                "popseg data has been edited by senior techs. please do not reload member."
-            }
-          ]
-        }
-      },
-
-      "jira": {
-        "missing program": {
-          fields: [
-            "program",
-            "criteria"
-          ],
-
-          notes: [
-            {
-              title: "note",
-
-              template:
-                "jira request submitted for missing {{program}} not pulling. criteria id {{criteria}}."
-            }
-          ]
-        }
-      },
-
-      "mtat": {
-        "denial overturned": {
-          fields: [
-            "caseNumber",
-            "drug",
-            "strength",
-            "form",
-            "startDate",
-            "endDate",
-            "reviewType"
-          ],
-
-          custom: "mtat"
-        }
-      },
-
-      "letter edit": {
-        "manual letter edit": {
-          fields: [
-            "mailDate",
-            "mailTime",
-            "faxDate",
-            "faxTime"
-          ],
-
-          notes: [
-            {
-              title: "core note",
-
-              template:
-                "member letter manually mailed via seachange {{mailDate}} {{mailTime}} and prescriber letter rightfaxed {{faxDate}} {{faxTime}}."
-            }
-          ]
-        }
-      },
-
-      "terminate negative pa": {
-        "terminate negative pa": {
-          notes: [
-            {
-              title: "pa note",
-
-              template:
-                "terminating negative pa. new approval, negative pa preventing new pa from pulling."
-            }
-          ]
-        }
-      },
-
-      "reopen": {
-        "reopened per seniors": {
-          fields: [
-            "reopenType",
-            "details",
-            "paNumber"
-          ],
-
-          notes: [
-            {
-              title: "case note",
-
-              template:
-                "reopened per seniors: {{reopenType}} - {{details}}"
-            },
-
-            {
-              title: "qa note",
-
-              template:
-                "this is a reopen/correction of case {{paNumber}}."
-            }
-          ]
-        }
-      },
-
-      "transfer prior authorization": {
-        "transfer to another account": {
-          fields: [
-            "accountType",
-            "paNumber"
-          ],
-
-          custom: "transfer"
-        }
-      }
-    };
-
-    function init() {
-      const category =
-        document.getElementById(
-          "category"
-        );
-
-      Object
-        .keys(data)
-        .forEach(
-          function (name) {
-            const option =
-              document.createElement(
-                "option"
-              );
-
-            option.value = name;
-            option.textContent = name;
-
-            category.appendChild(
-              option
-            );
-          }
-        );
-    }
-
-    function loadSituations() {
-      const categoryValue =
-        document
-          .getElementById(
-            "category"
-          )
-          .value;
-
-      const situation =
-        document.getElementById(
-          "situation"
-        );
-
-      situation.innerHTML =
-        '<option value="">-- select situation --</option>';
-
-      clearFieldsAndOutputs();
-
-      if (!categoryValue) {
-        return;
-      }
-
-      Object
-        .keys(
-          data[categoryValue]
-        )
-        .forEach(
-          function (name) {
-            const option =
-              document.createElement(
-                "option"
-              );
-
-            option.value = name;
-            option.textContent = name;
-
-            situation.appendChild(
-              option
-            );
-          }
-        );
-    }
-
-    function renderFields() {
-      const categoryValue =
-        document
-          .getElementById(
-            "category"
-          )
-          .value;
-
-      const situationValue =
-        document
-          .getElementById(
-            "situation"
-          )
-          .value;
-
-      const fieldsWrap =
-        document.getElementById(
-          "fields"
-        );
-
-      document
-        .getElementById(
-          "outputs"
-        )
-        .style.display = "none";
-
-      document
-        .getElementById(
-          "outputs"
-        )
-        .innerHTML = "";
-
-      document
-        .getElementById(
-          "status"
-        )
-        .textContent = "";
-
-      if (
-        !categoryValue ||
-        !situationValue
-      ) {
-        fieldsWrap.classList.add(
-          "hidden"
-        );
-
-        fieldsWrap.innerHTML = "";
-
-        return;
-      }
-
-      const config =
-        data[categoryValue]
-          [situationValue];
-
-      const needed =
-        config.fields || [];
-
-      if (
-        needed.length === 0
-      ) {
-        fieldsWrap.classList.add(
-          "hidden"
-        );
-
-        fieldsWrap.innerHTML = "";
-
-        return;
-      }
-
-      fieldsWrap.classList.remove(
-        "hidden"
-      );
-
-      fieldsWrap.innerHTML =
-        '<div class="field-grid">' +
-        needed
-          .map(makeField)
-          .join("") +
-        "</div>";
-    }
-
-    function makeField(key) {
-      const field =
-        fields[key];
-
-      if (
-        field.type === "select"
-      ) {
-        return `
-          <div>
-
-            <label for="${key}">
-              ${field.label}
-            </label>
-
-            <select id="${key}">
-
-              <option value="">
-                -- select --
-              </option>
-
-              ${field.options
-                .map(
-                  function (option) {
-                    return `
-                      <option value="${option}">
-                        ${option}
-                      </option>
-                    `;
-                  }
-                )
-                .join("")}
-
-            </select>
-
-          </div>
-        `;
-      }
-
-      if (
-        field.type ===
-        "textarea"
-      ) {
-        return `
-          <div
-            style="
-              grid-column:
-              1 / -1;
-            "
-          >
-
-            <label for="${key}">
-              ${field.label}
-            </label>
-
-            <textarea
-              id="${key}"
-            ></textarea>
-
-          </div>
-        `;
-      }
-
-      return `
-        <div>
-
-          <label for="${key}">
-            ${field.label}
-          </label>
-
-          <input
-            id="${key}"
-            type="${field.type}"
-          >
-
-        </div>
-      `;
-    }
-
-    function collectValues(
-      config
-    ) {
-      const values = {};
-
-      (
-        config.fields || []
-      ).forEach(
-        function (key) {
-          const element =
-            document
-              .getElementById(key);
-
-          values[key] =
-            (
-              element
-                ? element.value
-                : ""
-            )
-              .trim()
-              .toLowerCase();
-        }
-      );
-
-      return values;
-    }
-
-    function formatInputDate(
-      value
-    ) {
-      if (!value) {
-        return "";
-      }
-
-      const parts =
-        value.split("-");
-
-      return (
-        parts[1] +
-        "/" +
-        parts[2] +
-        "/" +
-        parts[0]
-      );
-    }
-
-    function formatValue(
-      key,
-      value
-    ) {
-      if (
-        fields[key] &&
-        fields[key].type ===
-        "date"
-      ) {
-        return formatInputDate(
-          value
-        );
-      }
-
-      return value;
-    }
-
-    function fillTemplate(
-      template,
-      values
-    ) {
-      return template
-        .replace(
-          /\{\{(.*?)\}\}/g,
-          function (
-            match,
-            key
-          ) {
-            return formatValue(
-              key,
-              values[key] || ""
-            );
-          }
-        )
-        .replace(
-          /\s+/g,
-          " "
-        )
-        .trim();
-    }
-
-    function createNotes() {
-      const categoryValue =
-        document
-          .getElementById(
-            "category"
-          )
-          .value;
-
-      const situationValue =
-        document
-          .getElementById(
-            "situation"
-          )
-          .value;
-
-      const status =
-        document.getElementById(
-          "status"
-        );
-
-      if (
-        !categoryValue ||
-        !situationValue
-      ) {
-        status.textContent =
-          "please select a category and situation.";
-
-        return;
-      }
-
-      const config =
-        data[categoryValue]
-          [situationValue];
-
-      const values =
-        collectValues(config);
-
-      const missing =
-        (
-          config.fields || []
-        )
-          .filter(
-            function (key) {
-              return !values[key];
-            }
-          );
-
-      if (
-        missing.length
-      ) {
-        status.textContent =
-          "please complete all required fields.";
-
-        return;
-      }
-
-      let notes = [];
-
-      if (
-        config.custom ===
-        "mtat"
-      ) {
-        const drugLine = [
-          values.drug,
-          values.strength,
-          values.form
-        ]
-          .filter(Boolean)
-          .join(" ");
-
-        const base =
-          `${values.caseNumber} denial was overturned due to mtat. ${drugLine} was approved`;
-
-        const dates =
-          `effective ${formatInputDate(values.startDate)} until ${formatInputDate(values.endDate)}. prime clinical review 1-866-202-3474.`;
-
-        notes.push({
-          title: "core note",
-          text:
-            `${base} ${dates}`
-        });
-
-        const qlTypes = [
-          "pa/ql",
-          "st/ql",
-          "ce/ql"
-        ];
-
-        const qlText =
-          qlTypes.includes(
-            values.reviewType
-          )
-            ? " up to ql"
-            : "";
-
-        notes.push({
-          title: "rxclaim note",
-          text:
-            `${base}${qlText} ${dates}`
-        });
-      } else if (
-        config.custom ===
-        "transfer"
-      ) {
-        const fromTo =
-          values.accountType ===
-          "inactive account to active account"
-            ? "inactive account to active account"
-            : "active account to active account";
-
-        notes.push({
-          title: "note",
-          text:
-            `transferred pa from ${fromTo} per case ${values.paNumber}.`
-        });
-      } else {
-        notes =
-          (
-            config.notes || []
-          ).map(
-            function (note) {
-              return {
-                title:
-                  note.title,
-
-                text:
-                  fillTemplate(
-                    note.template,
-                    values
-                  )
-              };
-            }
-          );
-      }
-
-      renderOutputs(notes);
-
-      status.textContent =
-        "created";
-    }
-
-    function renderOutputs(
-      notes
-    ) {
-      const outputs =
-        document.getElementById(
-          "outputs"
-        );
-
-      outputs.innerHTML =
-        notes
-          .map(
-            function (
-              note,
-              index
-            ) {
-              return `
-                <div class="note-card">
-
-                  <h3>
-                    ${note.title}
-                  </h3>
-
-                  <textarea
-                    id="note${index}"
-                    readonly
-                    onclick="
-                      this.select()
-                    "
-                  >${note.text}</textarea>
-
-                  <div class="buttons">
-
-                    <button
-                      onclick="
-                        copyNote(
-                          'note${index}'
-                        )
-                      "
-                    >
-                      copy
-                    </button>
-
-                  </div>
-
-                </div>
-              `;
-            }
-          )
-          .join("");
-
-      outputs.style.display =
-        "block";
-    }
-
-    async function copyNote(id) {
-      const textarea =
-        document.getElementById(
-          id
-        );
-
-      try {
-        await navigator.clipboard
-          .writeText(
-            textarea.value
-          );
-      } catch (error) {
-        textarea.select();
-
-        document.execCommand(
-          "copy"
-        );
-      }
-
-      document
-        .getElementById(
-          "status"
-        )
-        .textContent =
-          "copied";
-    }
-
-    function clearFieldsAndOutputs() {
-      const fieldsWrap =
-        document.getElementById(
-          "fields"
-        );
-
-      fieldsWrap.classList.add(
-        "hidden"
-      );
-
-      fieldsWrap.innerHTML = "";
-
-      document
-        .getElementById(
-          "outputs"
-        )
-        .style.display = "none";
-
-      document
-        .getElementById(
-          "outputs"
-        )
-        .innerHTML = "";
-
-      document
-        .getElementById(
-          "status"
-        )
-        .textContent = "";
-    }
-
-    function resetAll() {
-      document
-        .getElementById(
-          "category"
-        )
-        .value = "";
-
-      document
-        .getElementById(
-          "situation"
-        )
-        .innerHTML =
-          '<option value="">-- select situation --</option>';
-
-      clearFieldsAndOutputs();
-    }
-
-    init();
-  </script>
-
+  `).join("");
+  outputs.style.display="block";
+}
+
+async function copyNote(id){
+  const area=document.getElementById(id);
+  try{await navigator.clipboard.writeText(area.value);}
+  catch{area.select();document.execCommand("copy");}
+  document.getElementById("status").textContent="copied";
+}
+
+function resetAll(){
+  localStorage.removeItem(storageKey);
+  document.getElementById("reason").value="";
+  document.getElementById("situation").innerHTML='<option value="">-- select situation --</option>';
+  document.getElementById("situationWrap").classList.add("hidden");
+  document.getElementById("fields").classList.add("hidden");
+  document.getElementById("fields").innerHTML="";
+  document.getElementById("outputs").style.display="none";
+  document.getElementById("outputs").innerHTML="";
+  document.getElementById("status").textContent="reset";
+}
+
+document.addEventListener("DOMContentLoaded",function(){
+  initReasons();
+  document.getElementById("reason").addEventListener("change",function(){loadSituations();});
+  document.getElementById("situation").addEventListener("change",function(){renderFields();});
+  restoreState();
+});
+</script>
 </body>
 </html>
